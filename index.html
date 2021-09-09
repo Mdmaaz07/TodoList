@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>ToDo List</title>
+</head>
+<body>
+    <nav >
+        <h3 class="navbar">TODOs</h3>
+    </nav>
+    <div class="container">
+        <div class="Column1">
+            <h5>Title :</h5>
+            <input type="text" id="title"><br>
+        </div>
+        <div class="Column2">
+            <h5>Description :</h5>
+            <input type="text" id="description"><br>
+        </div>
+        <br>
+        <button class="button"id="add">Add to List</button>
+        <button class="button" id="clear" onclick="clearStorage()" >Clear List</button>
+        <br><br><hr>
+        <div class="items">
+            <h2>Your TODOs :</h2>
+            <table id="table">
+                <thead class="tHeading">
+                    <tr>
+                        <th scope="col">Sl.No</th>
+                        <th scope="col">TODO Title</th>
+                        <th scope="col">TODO Description</th>
+                        <th scope="col">Action</th><ul></ul>
+                    </tr>
+                </thead><br>
+                <tbody id="tableBody" >
+                    <tr>
+                        <th scope="row">1</th>
+                        <th>First-Title</th>
+                        <th>First-Description</th>
+                        <th><button class="button" id="action">Delete</button></th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="author" style="float: right; margin-right: 50px;">
+        <h3 style="font-style:italic;">Developed By</h3>
+        <h2 style="font-family: cursive;">Mahammad Maaz</h2>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
