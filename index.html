@@ -5,51 +5,117 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>ToDo List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>TodoFlow — Beautiful Task Manager</title>
 </head>
 <body>
-    <nav >
-        <h3 class="navbar">TODOs</h3>
-    </nav>
-    <div class="container">
-        <div class="Column1">
-            <h5>Title :</h5>
-            <input type="text" id="title"><br>
-        </div>
-        <div class="Column2">
-            <h5>Description :</h5>
-            <input type="text" id="description"><br>
-        </div>
-        <br>
-        <button class="button"id="add">Add to List</button>
-        <button class="button" id="clear" onclick="clearStorage()" >Clear List</button>
-        <br><br><hr>
-        <div class="items">
-            <h2>Your TODOs :</h2>
-            <table id="table">
-                <thead class="tHeading">
-                    <tr>
-                        <th scope="col">Sl.No</th>
-                        <th scope="col">TODO Title</th>
-                        <th scope="col">TODO Description</th>
-                        <th scope="col">Action</th><ul></ul>
-                    </tr>
-                </thead><br>
-                <tbody id="tableBody" >
-                    <tr>
-                        <th scope="row">1</th>
-                        <th>First-Title</th>
-                        <th>First-Description</th>
-                        <th><button class="button" id="action">Delete</button></th>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <!-- Particle background decoration -->
+    <div class="bg-decoration">
+        <div class="particle p1"></div>
+        <div class="particle p2"></div>
+        <div class="particle p3"></div>
+        <div class="particle p4"></div>
+        <div class="particle p5"></div>
     </div>
-    <div id="author" style="float: right; margin-right: 50px;">
-        <h3 style="font-style:italic;">Developed By</h3>
-        <h2 style="font-family: cursive;">Mahammad Maaz</h2>
+
+    <!-- Main App Container -->
+    <div class="app-wrapper">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo">
+                <i class="fas fa-check-circle"></i>
+                <h1>TodoFlow</h1>
+            </div>
+            <p class="subtitle">Stay organized, stay productive</p>
+        </header>
+
+        <!-- Add Task Card -->
+        <section class="card add-task-card">
+            <div class="card-header">
+                <i class="fas fa-plus-circle"></i>
+                <h2>Add New Task</h2>
+            </div>
+            <div class="card-body">
+                <div class="input-group">
+                    <div class="input-field">
+                        <label for="title">
+                            <i class="fas fa-tag"></i> Task Title
+                        </label>
+                        <input type="text" id="title" placeholder="Enter task title..." autocomplete="off">
+                    </div>
+                    <div class="input-field">
+                        <label for="description">
+                            <i class="fas fa-align-left"></i> Description
+                        </label>
+                        <textarea id="description" placeholder="Enter task description..." rows="2"></textarea>
+                    </div>
+                </div>
+                <button class="btn btn-primary" id="add">
+                    <i class="fas fa-plus"></i> Add Task
+                </button>
+            </div>
+        </section>
+
+        <!-- Task List Card -->
+        <section class="card task-list-card">
+            <div class="card-header">
+                <div class="header-left">
+                    <i class="fas fa-list-check"></i>
+                    <h2>Your Tasks</h2>
+                    <span class="task-count" id="taskCount">0</span>
+                </div>
+                <div class="header-actions">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Search tasks..." autocomplete="off">
+                    </div>
+                    <button class="btn btn-danger btn-sm" id="clear" onclick="clearStorage()">
+                        <i class="fas fa-trash-can"></i> Clear All
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <!-- Filter Tabs -->
+                <div class="filter-tabs">
+                    <button class="filter-btn active" data-filter="all" onclick="setFilter('all')">All</button>
+                    <button class="filter-btn" data-filter="active" onclick="setFilter('active')">Active</button>
+                    <button class="filter-btn" data-filter="completed" onclick="setFilter('completed')">Completed</button>
+                </div>
+
+                <!-- Tasks Container -->
+                <div id="tasksContainer">
+                    <!-- Tasks will be dynamically inserted here -->
+                </div>
+
+                <!-- Empty State -->
+                <div class="empty-state" id="emptyState">
+                    <div class="empty-icon">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <h3>No tasks yet</h3>
+                    <p>Add your first task above to get started!</p>
+                </div>
+
+                <!-- No Results State -->
+                <div class="empty-state" id="noResultsState" style="display: none;">
+                    <div class="empty-icon">
+                        <i class="fas fa-search-minus"></i>
+                    </div>
+                    <h3>No tasks found</h3>
+                    <p>Try a different search term.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>Built with <i class="fas fa-heart"></i> by <span class="author">Mahammad Maaz</span></p>
+        </footer>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
